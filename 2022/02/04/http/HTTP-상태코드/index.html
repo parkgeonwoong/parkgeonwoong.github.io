@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>6. HTTP 상태코드 - Woongs</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Woongs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Woongs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="📌 HTTP 상태코드 HTTP 상태코드  ✅ 상태 코드 만약 모르는 상태 코드가 나타나면 ? 🔹 2xx (Successful) 🔹 3xx (Redirection) 🔹 4xx (Client Error) 🔹 5xx (Server Error)    참고 : https:&amp;#x2F;&amp;#x2F;catsbi.oopy.io&amp;#x2F;418f4c7e-2c07-4e54-a214-32d8d28"><meta property="og:type" content="blog"><meta property="og:title" content="6. HTTP 상태코드"><meta property="og:url" content="https://parkgeonwoong.github.io/2022/02/04/http/HTTP-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C/"><meta property="og:site_name" content="Woongs"><meta property="og:description" content="📌 HTTP 상태코드 HTTP 상태코드  ✅ 상태 코드 만약 모르는 상태 코드가 나타나면 ? 🔹 2xx (Successful) 🔹 3xx (Redirection) 🔹 4xx (Client Error) 🔹 5xx (Server Error)    참고 : https:&amp;#x2F;&amp;#x2F;catsbi.oopy.io&amp;#x2F;418f4c7e-2c07-4e54-a214-32d8d28"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://parkgeonwoong.github.io/images/httpstatus/Untitled.png"><meta property="og:image" content="https://parkgeonwoong.github.io/images/httpstatus/Untitled1.png"><meta property="og:image" content="https://parkgeonwoong.github.io/images/httpstatus/Untitled2.png"><meta property="og:image" content="https://parkgeonwoong.github.io/images/httpstatus/Untitled3.png"><meta property="og:image" content="https://parkgeonwoong.github.io/images/httpstatus/Untitled4.png"><meta property="og:image" content="https://parkgeonwoong.github.io/images/httpstatus/Untitled5.png"><meta property="og:image" content="https://parkgeonwoong.github.io/images/httpstatus/Untitled6.png"><meta property="article:published_time" content="2022-02-04T06:03:45.000Z"><meta property="article:modified_time" content="2022-02-04T06:09:16.489Z"><meta property="article:author" content="woongs"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/images/httpstatus/Untitled.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://parkgeonwoong.github.io/2022/02/04/http/HTTP-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C/"},"headline":"6. HTTP 상태코드","image":["https://parkgeonwoong.github.io/images/httpstatus/Untitled.png","https://parkgeonwoong.github.io/images/httpstatus/Untitled1.png","https://parkgeonwoong.github.io/images/httpstatus/Untitled2.png","https://parkgeonwoong.github.io/images/httpstatus/Untitled3.png","https://parkgeonwoong.github.io/images/httpstatus/Untitled4.png","https://parkgeonwoong.github.io/images/httpstatus/Untitled5.png","https://parkgeonwoong.github.io/images/httpstatus/Untitled6.png"],"datePublished":"2022-02-04T06:03:45.000Z","dateModified":"2022-02-04T06:09:16.489Z","author":{"@type":"Person","name":"Woongs"},"publisher":{"@type":"Organization","name":"Woongs","logo":{"@type":"ImageObject","url":"https://parkgeonwoong.github.io/img/logo.svg"}},"description":"📌 HTTP 상태코드 HTTP 상태코드  ✅ 상태 코드 만약 모르는 상태 코드가 나타나면 ? 🔹 2xx (Successful) 🔹 3xx (Redirection) 🔹 4xx (Client Error) 🔹 5xx (Server Error)    참고 : https:&#x2F;&#x2F;catsbi.oopy.io&#x2F;418f4c7e-2c07-4e54-a214-32d8d28"}</script><link rel="canonical" href="https://parkgeonwoong.github.io/2022/02/04/http/HTTP-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.0.2"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Woongs" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-7-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-02-04T06:03:45.000Z" title="2022. 2. 4. 오후 3:03:45">2022-02-04</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-02-04T06:09:16.489Z" title="2022. 2. 4. 오후 3:09:16">2022-02-04</time></span><span class="level-item"><a class="link-muted" href="/categories/http/">http</a></span><span class="level-item">13 minutes read (About 1947 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">6. HTTP 상태코드</h1><div class="content"><h1 id="📌-HTTP-상태코드"><a href="#📌-HTTP-상태코드" class="headerlink" title="📌 HTTP 상태코드"></a>📌 HTTP 상태코드</h1><ul>
+<li><a href="#http-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C">HTTP 상태코드</a> <!--no toc --></li>
+<li><a href="#-%EC%83%81%ED%83%9C-%EC%BD%94%EB%93%9C">✅ 상태 코드</a><ul>
+<li><a href="#%EB%A7%8C%EC%95%BD-%EB%AA%A8%EB%A5%B4%EB%8A%94-%EC%83%81%ED%83%9C-%EC%BD%94%EB%93%9C%EA%B0%80-%EB%82%98%ED%83%80%EB%82%98%EB%A9%B4-">만약 모르는 상태 코드가 나타나면 ?</a></li>
+<li><a href="#-2xx-successful">🔹 2xx (Successful)</a></li>
+<li><a href="#-3xx-redirection">🔹 3xx (Redirection)</a></li>
+<li><a href="#-4xx-client-error">🔹 4xx (Client Error)</a></li>
+<li><a href="#-5xx-server-error">🔹 5xx (Server Error)</a></li>
+</ul>
+</li>
+</ul>
+<p>참고 : <a target="_blank" rel="noopener" href="https://catsbi.oopy.io/418f4c7e-2c07-4e54-a214-32d8d28e99da">https://catsbi.oopy.io/418f4c7e-2c07-4e54-a214-32d8d28e99da</a></p>
+<p><a target="_blank" rel="noopener" href="https://velog.io/@dnstlr2933/HTTP-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C">https://velog.io/@dnstlr2933/HTTP-상태코드</a></p>
+<br>
+
+<a id="more"></a>
+
+<h1 id="✅-상태-코드"><a href="#✅-상태-코드" class="headerlink" title="✅ 상태 코드"></a>✅ 상태 코드</h1><p>클라이언트가 보낸 요청의 처리 상태를 응답에서 알려주는 기능</p>
+<ul>
+<li>1xx (Informational) : 요청이 수신되어 처리중</li>
+<li>2xx (Successful) : 요청 정상 처리</li>
+<li>3xx (Redirection) : 요청을 완료하려면 추가 행동이 필요</li>
+<li>4xx (Client Error) : 클라이언트 오류, 잘못된 문법등으로 서버가 요청을 수행할 수 없는 경우</li>
+<li>5xx (Server Error) : 서버 오류, 서버가 정상 요청을 처리하지 못한 경우</li>
+</ul>
+<br>
+
+<h3 id="만약-모르는-상태-코드가-나타나면"><a href="#만약-모르는-상태-코드가-나타나면" class="headerlink" title="만약 모르는 상태 코드가 나타나면 ?"></a>만약 모르는 상태 코드가 나타나면 ?</h3><ul>
+<li>클라이언트가 인식할 수 없는 상태코드를 서버가 반환하면?</li>
+<li>클라이언트는 상위 상태코드로 해석해서 처리</li>
+<li>미래에 새로운 상태 코드가 추가 되어도 클라이언트를 변경하지 않아도 됨<ul>
+<li><strong>2</strong>99 (???) -&gt; <strong>2</strong>xx (Successful)</li>
+<li><strong>4</strong>51 (???) -&gt; <strong>4</strong>xx (Client Error)</li>
+<li><strong>5</strong>99 (???) -&gt; <strong>5</strong>xx (Server Error)</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h2 id="🔹-2xx-Successful"><a href="#🔹-2xx-Successful" class="headerlink" title="🔹 2xx (Successful)"></a>🔹 2xx (Successful)</h2><ul>
+<li>클라이언트의 요청을 성공적으로 처리</li>
+<li><code>200 OK</code></li>
+<li><code>201 Created</code> (리소스 생성, POST로 등록 등의 경우)</li>
+<li><code>202 Accepted</code></li>
+<li><code>203 No Content</code></li>
+</ul>
+<h3 id="🔸-200-ok"><a href="#🔸-200-ok" class="headerlink" title="🔸 200 ok"></a>🔸 200 ok</h3><ul>
+<li>요청 성공</li>
+</ul>
+<p><img src="/images/httpstatus/Untitled.png"></p>
+<h3 id="🔸-201-Created"><a href="#🔸-201-Created" class="headerlink" title="🔸 201 Created"></a>🔸 201 Created</h3><ul>
+<li>요청 성공해서 새로운 리소스가 생성됨</li>
+</ul>
+<p><img src="/images/httpstatus/Untitled1.png"></p>
+<h3 id="🔸-202-Accepted"><a href="#🔸-202-Accepted" class="headerlink" title="🔸 202 Accepted"></a>🔸 202 Accepted</h3><ul>
+<li>요청이 접수되었으나 처리가 완료되지 않음</li>
+<li>배치 처리 같은 곳에서 사용<ul>
+<li>예) 요청 접수 후 1시간 뒤에 배치 프로세스가 요청을 처리함</li>
+</ul>
+</li>
+</ul>
+<h3 id="🔸-203-No-Content"><a href="#🔸-203-No-Content" class="headerlink" title="🔸 203 No Content"></a>🔸 203 No Content</h3><ul>
+<li>서버가 요청을 성공적으로 수행했지만, 응답 페이로드 본문에 보낼 데이터가 없음</li>
+<li>예) 웹 문서 편집기에서 save 버튼</li>
+<li>save 버튼의 결과로 아무 내용이 없어도 된다</li>
+<li>save 버튼을 눌러도 같은 화면을 유지해야 한다</li>
+</ul>
+<br>
+
+<h2 id="🔹-3xx-Redirection"><a href="#🔹-3xx-Redirection" class="headerlink" title="🔹 3xx (Redirection)"></a>🔹 3xx (Redirection)</h2><ul>
+<li>요청을 완료하기 위해 유저 에이전트의 추가 조치 필요</li>
+<li><code>300 Multiple Choices</code> (사용 X)</li>
+<li><code>301 Moved Permanently</code></li>
+<li><code>302 Found</code></li>
+<li><code>303 See Other</code></li>
+<li><code>304 Not Modified</code></li>
+<li><code>307 Temporary Redirect</code></li>
+<li><code>308 Permanent Redirect</code></li>
+</ul>
+<br>
+
+<h3 id="리다이렉션-이해"><a href="#리다이렉션-이해" class="headerlink" title="리다이렉션 이해"></a>리다이렉션 이해</h3><ul>
+<li>웹 브라우저는 3xx 응답의 결과에 Location 헤더가 있으면, Location 위치로 자동 이동<br>(리다이렉트)</li>
+</ul>
+<p><img src="/images/httpstatus/Untitled2.png"></p>
+<br>
+
+<h3 id="🔸-종류"><a href="#🔸-종류" class="headerlink" title="🔸 종류"></a>🔸 종류</h3><ul>
+<li><strong>영구 리다이렉션</strong> - 특정 리소스의 URI가 영구적으로(permanently) 이동<ul>
+<li>예) /members -&gt; /users</li>
+<li>예) /event -&gt; /new-event</li>
+</ul>
+</li>
+<li><strong>일시 리다이렉션</strong> - 일시적인 변경<ul>
+<li>주문 완료 후 주문 내역 화면으로 일시적으로 이동</li>
+<li>PRG : Post/Redirect/Get</li>
+</ul>
+</li>
+<li><strong>특수 리다이렉션</strong><ul>
+<li>결과 대신 캐시를 사용</li>
+<li>다시 서버한테서 다운 받지 말고 브라우저에 있는 캐시를 써라</li>
+</ul>
+</li>
+</ul>
+<h3 id="🔸-영구-리다이렉션-301-308"><a href="#🔸-영구-리다이렉션-301-308" class="headerlink" title="🔸 영구 리다이렉션 - 301, 308"></a>🔸 영구 리다이렉션 - 301, 308</h3><ul>
+<li><strong>리소스의 URI가 영구적으로 이동</strong></li>
+<li>원래의 URI를 사용 X, 검색 엔진 등에서도 변경을 인지</li>
+<li><code>301 Moved Permanently</code><ul>
+<li>리다이렉트시 <strong>요청 메서드가 GET으로 변하고</strong>, <strong>본문이 제거</strong>될 수 있다</li>
+<li>무언가를 작성한 데이터를 전송하는 경우였다면(post), GET으로 변하면서 해당 데이터는 날라가고 다시 작성해야 된다</li>
+</ul>
+</li>
+<li><code>308 Permanent Redirect</code><ul>
+<li>301과 기능은 같다</li>
+<li>리다이렉트시 요청 메서드와 본문을 유지한다 (처음 POST를 보내면 리다이렉트도 POST로 유지)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/httpstatus/Untitled3.png"></p>
+<p><img src="/images/httpstatus/Untitled4.png"></p>
+<br>
+
+<h3 id="🔸-일시적인-리다이렉션-302-307-303"><a href="#🔸-일시적인-리다이렉션-302-307-303" class="headerlink" title="🔸 일시적인 리다이렉션 - 302, 307, 303"></a>🔸 일시적인 리다이렉션 - 302, 307, 303</h3><ul>
+<li>리소스의 URI가 <strong>일시적으로</strong> 변경</li>
+<li>따라서 검색 엔진 등에서 URL을 변경하면 안된다</li>
+<li><strong>302 Found</strong><ul>
+<li>리다이렉트시 요청 메시지가 <strong>GET</strong>으로 변하고, 본문이 제거될 수 있음</li>
+</ul>
+</li>
+<li><strong>307 Temporary Redirect</strong><ul>
+<li>302와 기능이 똑같다</li>
+<li>POST 유지</li>
+<li>리다이렉트시 <strong>요청 메서드와 본문을 유지</strong>한다 (<strong>요청 메시지 변경은 X, MUST NOT</strong>)</li>
+</ul>
+</li>
+<li><strong>303 See Other</strong><ul>
+<li>302와 기능이 똑같다</li>
+<li>라다이렉트시 요청 메서드가 <strong>GET</strong>으로 변경</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h3 id="PRG-POST-Redirect-GET"><a href="#PRG-POST-Redirect-GET" class="headerlink" title="PRG : POST/Redirect/GET"></a>PRG : POST/Redirect/GET</h3><p>일시적인 리다이렉션의 사용은 언제 쓸까?</p>
+<p><code>문제점</code></p>
+<ul>
+<li>POST로 주문후에 웹 브라우저를 새로고침하면?</li>
+<li>새로고침은 다시 요청</li>
+<li>중복 주문이 될 수 있다</li>
+</ul>
+<p><img src="/images/httpstatus/Untitled5.png"></p>
+<p><code>해결점</code></p>
+<ul>
+<li>POST로 주문 후에 새로 고침으로 인한 중복 주문 방지 (클라에서 차단)</li>
+<li>POST로 주문후에 주문 결과 화면을 GET 메서드로 리다이렉트</li>
+<li>새로고침해도 결과 화면을 GET으로 조회</li>
+<li>중복 주문 대신에 결과 화면만 GET으로 다시 요청</li>
+</ul>
+<p><img src="/images/httpstatus/Untitled6.png"></p>
+<ul>
+<li>PRG 이후 리다이렉트<ul>
+<li>URL이 이미 POST → GET으로 리다이렉트 됨</li>
+<li>새로 고침 해도 GET으로 결과 화면만 조회</li>
+</ul>
+</li>
+</ul>
+<h3 id="🔸-기타-리다이렉션"><a href="#🔸-기타-리다이렉션" class="headerlink" title="🔸 기타 리다이렉션"></a>🔸 기타 리다이렉션</h3><ul>
+<li><strong>304 Not Modified</strong><ul>
+<li>캐시를 목적으로 사용한다</li>
+<li>클라이언트에게 리소스가 변경(수정)되지 않았음을 알려준다. 따라서 클라이언트는 로컬PC에 저장된 캐시를 재사용하게 된다 (캐시로 리다이렉트 한다)</li>
+<li>304 응답은 응답에 메시지 바디를 포함 하면 안된다(로컬 캐시를 사용하라는 것이므로)</li>
+<li>조건부 GET, HEAD 요청시 사용한다</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h2 id="🔹-4xx-Client-Error"><a href="#🔹-4xx-Client-Error" class="headerlink" title="🔹 4xx (Client Error)"></a>🔹 4xx (Client Error)</h2><ul>
+<li>클라이언트의 요청에 잘못된 문법등으로 서버가 요청을 수행할 수 없음</li>
+<li><strong>오류의 원인이 클라이언트에 있음</strong></li>
+<li><code>중요!</code> 클라이언트가 이미 잘못된 요청, 데이터를 보내고 있기 때문에, 똑같은 재시도가 실패함</li>
+</ul>
+<h3 id="🔸-400-Bad-Request"><a href="#🔸-400-Bad-Request" class="headerlink" title="🔸 400 Bad Request"></a>🔸 400 Bad Request</h3><ul>
+<li><strong>클라이언트가 잘못된 요청을 해서 서버가 요청을 처리할 수 없음</strong></li>
+<li>요청 구문, 메시지 등등 오류</li>
+<li>클라이언트는 요청 내용을 다시 검토하고, 보내야함<ul>
+<li>예) 요청 파라미터가 잘못되거나, API 스펙이 맞지 않을 때</li>
+</ul>
+</li>
+</ul>
+<h3 id="🔸-401-Unauthorized"><a href="#🔸-401-Unauthorized" class="headerlink" title="🔸 401 Unauthorized"></a>🔸 401 Unauthorized</h3><ul>
+<li><strong>클라이언트가 해당 리소스에 대한 인증이 필요함</strong></li>
+<li>인증(Authentication)되지 않음</li>
+<li>401 오류 발생시 응답에 <code>WWW-Authenticate 헤더</code>와 함께 인증 방법을 설명</li>
+<li>참고<ul>
+<li>인증 (Authentication) : 본인이 누구인지 확인하는 것 (로그인)</li>
+<li>인가 (Authorization) : 권한 부여 (ADMIN 권한 처럼 특정 리소스에 접근할 수 있는 권한, 먼저 인증이 있어야 인가가 있다)</li>
+<li>오류 메시지가 <code>Unauthorized</code>이지만 의미는 <code>인증이 되지 않음</code>이다 (단어로는 Unauthentication이 인증되지 않았다는 뜻)</li>
+</ul>
+</li>
+</ul>
+<h3 id="🔸-403-Forbidden"><a href="#🔸-403-Forbidden" class="headerlink" title="🔸 403 Forbidden"></a>🔸 403 Forbidden</h3><ul>
+<li><strong>서버가 요청을 이해했지만 승인을 거부함</strong></li>
+<li>주로 인증 자격 증명은 있지만, 접근 권한이 불충분한 경우</li>
+<li>예) 어드민 등급 아닌 사용자가 로그인했지만, 어드민 등급의 리소스에 접근하는 경우</li>
+</ul>
+<h3 id="🔸-404-Not-Found"><a href="#🔸-404-Not-Found" class="headerlink" title="🔸 404 Not Found"></a>🔸 404 Not Found</h3><ul>
+<li><strong>요청 리소스를 찾을 수 없음</strong></li>
+<li>요청 리소스가 서버에 없음</li>
+<li>또는 클라가 권한이 부족한 리소스에 접근할 때 해당 리소스를 숨기고 싶을 때</li>
+</ul>
+<br>
+
+<h2 id="🔹-5xx-Server-Error"><a href="#🔹-5xx-Server-Error" class="headerlink" title="🔹 5xx (Server Error)"></a>🔹 5xx (Server Error)</h2><p>서버 오류</p>
+<ul>
+<li>서버 문제로 오류 발생</li>
+<li>서버에 문제가 있기 때문에 재시도 하면 성공할 수 도 있음</li>
+</ul>
+<h3 id="🔸-500-Internal-Server-Error"><a href="#🔸-500-Internal-Server-Error" class="headerlink" title="🔸 500 Internal Server Error"></a>🔸 500 Internal Server Error</h3><ul>
+<li><strong>서버 문제로 오류 발생, 애매하면 500오류</strong></li>
+</ul>
+<h3 id="🔸-503-Service-Unavailable"><a href="#🔸-503-Service-Unavailable" class="headerlink" title="🔸 503 Service Unavailable"></a>🔸 503 Service Unavailable</h3><ul>
+<li><strong>서비스 이용 불가</strong></li>
+<li>서버가 일시적인 과부하 또는 예정된 작업으로 잠시 요청을 처리할 수 없음</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>6. HTTP 상태코드</p><p><a href="https://parkgeonwoong.github.io/2022/02/04/http/HTTP-상태코드/">https://parkgeonwoong.github.io/2022/02/04/http/HTTP-상태코드/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Woongs</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-02-04</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-02-04</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/02/08/http/HTTP-%EC%9D%BC%EB%B0%98%ED%97%A4%EB%8D%94/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">7. HTTP 일반헤더</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/02/03/http/HTTP-%EB%A9%94%EC%84%9C%EB%93%9C-%ED%99%9C%EC%9A%A9/"><span class="level-item">5. HTTP 메서드 활용</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-2.5-tablet is-2.5-desktop is-2.5-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="https://avatars.githubusercontent.com/u/65653053?v=4" alt="Parkgeonwoong"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Parkgeonwoong</p><p class="is-size-6 is-block">Woongs</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Seoul</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">19</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/parkgeonwoong" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/parkgeonwoong"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://github.com/parkgeonwoong" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Github</span></span><span class="level-right"><span class="level-item tag">github.com</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Interactive/"><span class="level-start"><span class="level-item">Interactive</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/React/"><span class="level-start"><span class="level-item">React</span></span><span class="level-end"><span class="level-item tag">5</span></span></a><ul><li><a class="level is-mobile" href="/categories/React/Document/"><span class="level-start"><span class="level-item">Document</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/http/"><span class="level-start"><span class="level-item">http</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/"><span class="level-start"><span class="level-item">자료구조</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">February 2022</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li></ul></div></div></div><!--!--><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-2.5-tablet is-2.5-desktop is-2.5-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#📌-HTTP-상태코드"><span class="level-left"><span class="level-item">1</span><span class="level-item">📌 HTTP 상태코드</span></span></a></li><li><a class="level is-mobile" href="#✅-상태-코드"><span class="level-left"><span class="level-item">2</span><span class="level-item">✅ 상태 코드</span></span></a><ul class="menu-list"><ul class="menu-list"><li><a class="level is-mobile" href="#만약-모르는-상태-코드가-나타나면"><span class="level-left"><span class="level-item">2.1.1</span><span class="level-item">만약 모르는 상태 코드가 나타나면 ?</span></span></a></li></ul><li><a class="level is-mobile" href="#🔹-2xx-Successful"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">🔹 2xx (Successful)</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#🔸-200-ok"><span class="level-left"><span class="level-item">2.2.1</span><span class="level-item">🔸 200 ok</span></span></a></li><li><a class="level is-mobile" href="#🔸-201-Created"><span class="level-left"><span class="level-item">2.2.2</span><span class="level-item">🔸 201 Created</span></span></a></li><li><a class="level is-mobile" href="#🔸-202-Accepted"><span class="level-left"><span class="level-item">2.2.3</span><span class="level-item">🔸 202 Accepted</span></span></a></li><li><a class="level is-mobile" href="#🔸-203-No-Content"><span class="level-left"><span class="level-item">2.2.4</span><span class="level-item">🔸 203 No Content</span></span></a></li></ul></li><li><a class="level is-mobile" href="#🔹-3xx-Redirection"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">🔹 3xx (Redirection)</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#리다이렉션-이해"><span class="level-left"><span class="level-item">2.3.1</span><span class="level-item">리다이렉션 이해</span></span></a></li><li><a class="level is-mobile" href="#🔸-종류"><span class="level-left"><span class="level-item">2.3.2</span><span class="level-item">🔸 종류</span></span></a></li><li><a class="level is-mobile" href="#🔸-영구-리다이렉션-301-308"><span class="level-left"><span class="level-item">2.3.3</span><span class="level-item">🔸 영구 리다이렉션 - 301, 308</span></span></a></li><li><a class="level is-mobile" href="#🔸-일시적인-리다이렉션-302-307-303"><span class="level-left"><span class="level-item">2.3.4</span><span class="level-item">🔸 일시적인 리다이렉션 - 302, 307, 303</span></span></a></li><li><a class="level is-mobile" href="#PRG-POST-Redirect-GET"><span class="level-left"><span class="level-item">2.3.5</span><span class="level-item">PRG : POST/Redirect/GET</span></span></a></li><li><a class="level is-mobile" href="#🔸-기타-리다이렉션"><span class="level-left"><span class="level-item">2.3.6</span><span class="level-item">🔸 기타 리다이렉션</span></span></a></li></ul></li><li><a class="level is-mobile" href="#🔹-4xx-Client-Error"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">🔹 4xx (Client Error)</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#🔸-400-Bad-Request"><span class="level-left"><span class="level-item">2.4.1</span><span class="level-item">🔸 400 Bad Request</span></span></a></li><li><a class="level is-mobile" href="#🔸-401-Unauthorized"><span class="level-left"><span class="level-item">2.4.2</span><span class="level-item">🔸 401 Unauthorized</span></span></a></li><li><a class="level is-mobile" href="#🔸-403-Forbidden"><span class="level-left"><span class="level-item">2.4.3</span><span class="level-item">🔸 403 Forbidden</span></span></a></li><li><a class="level is-mobile" href="#🔸-404-Not-Found"><span class="level-left"><span class="level-item">2.4.4</span><span class="level-item">🔸 404 Not Found</span></span></a></li></ul></li><li><a class="level is-mobile" href="#🔹-5xx-Server-Error"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">🔹 5xx (Server Error)</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#🔸-500-Internal-Server-Error"><span class="level-left"><span class="level-item">2.5.1</span><span class="level-item">🔸 500 Internal Server Error</span></span></a></li><li><a class="level is-mobile" href="#🔸-503-Service-Unavailable"><span class="level-left"><span class="level-item">2.5.2</span><span class="level-item">🔸 503 Service Unavailable</span></span></a></li></ul></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Woongs" height="28"></a><p class="is-size-7"><span>&copy; 2022 Woongs</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>

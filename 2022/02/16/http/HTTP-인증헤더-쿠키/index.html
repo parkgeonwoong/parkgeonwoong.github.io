@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>9. HTTP-인증헤더&amp;쿠키 - Woongs</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Woongs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Woongs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="📌 인증 헤더, 쿠키 📌 인증 헤더, 쿠키 ✅ 인증 🔸 Authorizaton 🔸 WWW-Authenticate   ✅ 쿠키 예제 - 쿠키 미사용 🔸 Stateless (무상태) 🔸 쿠키 상세 설명 🔸 쿠키 - 생명 주기 🔸 쿠키 - 도메인 🔸 쿠키 - 경로 🔸 쿠키 - 보안      참고 : https:&amp;#x2F;&amp;#x2F;velog.io&amp;#x2F;@dnstlr2"><meta property="og:type" content="blog"><meta property="og:title" content="9. HTTP-인증헤더&amp;쿠키"><meta property="og:url" content="https://parkgeonwoong.github.io/2022/02/16/http/HTTP-%EC%9D%B8%EC%A6%9D%ED%97%A4%EB%8D%94-%EC%BF%A0%ED%82%A4/"><meta property="og:site_name" content="Woongs"><meta property="og:description" content="📌 인증 헤더, 쿠키 📌 인증 헤더, 쿠키 ✅ 인증 🔸 Authorizaton 🔸 WWW-Authenticate   ✅ 쿠키 예제 - 쿠키 미사용 🔸 Stateless (무상태) 🔸 쿠키 상세 설명 🔸 쿠키 - 생명 주기 🔸 쿠키 - 도메인 🔸 쿠키 - 경로 🔸 쿠키 - 보안      참고 : https:&amp;#x2F;&amp;#x2F;velog.io&amp;#x2F;@dnstlr2"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://parkgeonwoong.github.io/images/httpCookie/Untitled.png"><meta property="og:image" content="https://parkgeonwoong.github.io/images/httpCookie/Untitled1.png"><meta property="og:image" content="https://parkgeonwoong.github.io/images/httpCookie/Untitled2.png"><meta property="article:published_time" content="2022-02-16T04:39:58.000Z"><meta property="article:modified_time" content="2022-02-16T06:03:02.598Z"><meta property="article:author" content="woongs"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/images/httpCookie/Untitled.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://parkgeonwoong.github.io/2022/02/16/http/HTTP-%EC%9D%B8%EC%A6%9D%ED%97%A4%EB%8D%94-%EC%BF%A0%ED%82%A4/"},"headline":"9. HTTP-인증헤더&쿠키","image":["https://parkgeonwoong.github.io/images/httpCookie/Untitled.png","https://parkgeonwoong.github.io/images/httpCookie/Untitled1.png","https://parkgeonwoong.github.io/images/httpCookie/Untitled2.png"],"datePublished":"2022-02-16T04:39:58.000Z","dateModified":"2022-02-16T06:03:02.598Z","author":{"@type":"Person","name":"Woongs"},"publisher":{"@type":"Organization","name":"Woongs","logo":{"@type":"ImageObject","url":"https://parkgeonwoong.github.io/img/logo.svg"}},"description":"📌 인증 헤더, 쿠키 📌 인증 헤더, 쿠키 ✅ 인증 🔸 Authorizaton 🔸 WWW-Authenticate   ✅ 쿠키 예제 - 쿠키 미사용 🔸 Stateless (무상태) 🔸 쿠키 상세 설명 🔸 쿠키 - 생명 주기 🔸 쿠키 - 도메인 🔸 쿠키 - 경로 🔸 쿠키 - 보안      참고 : https:&#x2F;&#x2F;velog.io&#x2F;@dnstlr2"}</script><link rel="canonical" href="https://parkgeonwoong.github.io/2022/02/16/http/HTTP-%EC%9D%B8%EC%A6%9D%ED%97%A4%EB%8D%94-%EC%BF%A0%ED%82%A4/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.0.2"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Woongs" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-9-tablet is-9-desktop is-7-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-02-16T04:39:58.000Z" title="2022. 2. 16. 오후 1:39:58">2022-02-16</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-02-16T06:03:02.598Z" title="2022. 2. 16. 오후 3:03:02">2022-02-16</time></span><span class="level-item"><a class="link-muted" href="/categories/http/">http</a></span><span class="level-item">8 minutes read (About 1234 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">9. HTTP-인증헤더&amp;쿠키</h1><div class="content"><h1 id="📌-인증-헤더-쿠키"><a href="#📌-인증-헤더-쿠키" class="headerlink" title="📌 인증 헤더, 쿠키"></a>📌 인증 헤더, 쿠키</h1><ul>
+<li><a href="#-%EC%9D%B8%EC%A6%9D-%ED%97%A4%EB%8D%94-%EC%BF%A0%ED%82%A4">📌 인증 헤더, 쿠키</a><ul>
+<li><a href="#-%EC%9D%B8%EC%A6%9D">✅ 인증</a><ul>
+<li><a href="#-authorizaton">🔸 Authorizaton</a></li>
+<li><a href="#-www-authenticate">🔸 WWW-Authenticate</a></li>
+</ul>
+</li>
+<li><a href="#-%EC%BF%A0%ED%82%A4">✅ 쿠키</a><ul>
+<li><a href="#%EC%98%88%EC%A0%9C---%EC%BF%A0%ED%82%A4-%EB%AF%B8%EC%82%AC%EC%9A%A9">예제 - 쿠키 미사용</a></li>
+<li><a href="#-stateless-%EB%AC%B4%EC%83%81%ED%83%9C">🔸 Stateless (무상태)</a></li>
+<li><a href="#-%EC%BF%A0%ED%82%A4-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85">🔸 쿠키 상세 설명</a></li>
+<li><a href="#-%EC%BF%A0%ED%82%A4---%EC%83%9D%EB%AA%85-%EC%A3%BC%EA%B8%B0">🔸 쿠키 - 생명 주기</a></li>
+<li><a href="#-%EC%BF%A0%ED%82%A4---%EB%8F%84%EB%A9%94%EC%9D%B8">🔸 쿠키 - 도메인</a></li>
+<li><a href="#-%EC%BF%A0%ED%82%A4---%EA%B2%BD%EB%A1%9C">🔸 쿠키 - 경로</a></li>
+<li><a href="#-%EC%BF%A0%ED%82%A4---%EB%B3%B4%EC%95%88">🔸 쿠키 - 보안</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>참고 : <a target="_blank" rel="noopener" href="https://velog.io/@dnstlr2933/HTTP-%ED%97%A4%EB%8D%94-%EC%9D%BC%EB%B0%98%ED%97%A4%EB%8D%94">https://velog.io/@dnstlr2933/HTTP-헤더-일반헤더</a></p>
+<a id="more"></a>
+
+<br>
+
+<h2 id="✅-인증"><a href="#✅-인증" class="headerlink" title="✅ 인증"></a>✅ 인증</h2><h3 id="🔸-Authorizaton"><a href="#🔸-Authorizaton" class="headerlink" title="🔸 Authorizaton"></a>🔸 Authorizaton</h3><p><strong>클라이언트 인증 정보를 서버에 전달</strong></p>
+<ul>
+<li>Authorization: Basic xxxxxxxxxxxx<ul>
+<li>인증하는 메커니즘마다 들어가는 값이 다르다</li>
+</ul>
+</li>
+</ul>
+<h3 id="🔸-WWW-Authenticate"><a href="#🔸-WWW-Authenticate" class="headerlink" title="🔸 WWW-Authenticate"></a>🔸 WWW-Authenticate</h3><p><strong>리소스 접근시 필요한 인증 방법 정의</strong></p>
+<ul>
+<li>리소스 접근시 필요한 인증 방법을 정의한다</li>
+<li>401 Unauthorized 응답과 함께 사용한다</li>
+<li>WWW-Authenticate: <code>Newauth realm=&quot;apps&quot;, type=1, title=&quot;Login to\&quot;apps\&quot;&quot;, Basic realm=&quot;simple&quot;</code><ul>
+<li>위와 같은 내용을 참고해서 요청하라는 뜻이다</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h2 id="✅-쿠키"><a href="#✅-쿠키" class="headerlink" title="✅ 쿠키"></a>✅ 쿠키</h2><ul>
+<li>Set-Cookie : 서버에서 클라이언트로 쿠키 전달 (응답)</li>
+<li>Cookie : 클라이언트가 서버에서 받은 쿠키를 저장하고, HTTP 요청시 서버로 전달</li>
+</ul>
+<h3 id="예제-쿠키-미사용"><a href="#예제-쿠키-미사용" class="headerlink" title="예제 - 쿠키 미사용"></a>예제 - 쿠키 미사용</h3><p><img src="/images/httpCookie/Untitled.png"><br>위의 이유는?</p>
+<h3 id="🔸-Stateless-무상태"><a href="#🔸-Stateless-무상태" class="headerlink" title="🔸 Stateless (무상태)"></a>🔸 Stateless (무상태)</h3><ul>
+<li>HTTP는 무상태(Stateless) 프로토콜이다</li>
+<li>클라이언트와 서버가 요청과 응답을 주고 받고나면 연결이 끊어진다</li>
+<li>클라이언트가 다시 요청하면 <strong>서버는 이전 요청을 기억하지 못한다</strong><ul>
+<li>로그인 정보 조차도 기억하지 못한다</li>
+</ul>
+</li>
+<li>클라이언트와 서버는 서로 <strong>상태를 유지하지 않는다</strong></li>
+</ul>
+<p><code>대안</code> → 모든 요청에 사용자 정보 포함</p>
+<p>모든 요청과 링크에 사용자를 포함해야 해서 복잡해진다</p>
+<p>Q. 그럼 어떻게 정보를 기억하지?</p>
+<p>A. 요청 할 때마다 정보를 같이 넘기자</p>
+<ul>
+<li>모든 요청에 사용자 정보가 포함되도록 해야 한다<ul>
+<li>보안 문제도 있고, 복잡하다</li>
+</ul>
+</li>
+<li>브라우저를 완전히 종료하고 다시 열면 또 복잡해진다</li>
+<li>최종적인 대안으로 쿠키가 나왔다</li>
+</ul>
+<p><img src="/images/httpCookie/Untitled1.png"></p>
+<ul>
+<li><p>자동으로 웹브라우저는 해당 서버에 요청을 보낼 때 마다 <strong>쿠키 저장소를 항상 탐색</strong>해서<br>헤더에 포함해 서버에 보낸다</p>
+</li>
+<li><p>모든 요청에 쿠키 정보 자동 포함</p>
+</li>
+</ul>
+<p><img src="/images/httpCookie/Untitled2.png"></p>
+<br>
+
+<h3 id="🔸-쿠키-상세-설명"><a href="#🔸-쿠키-상세-설명" class="headerlink" title="🔸 쿠키 상세 설명"></a>🔸 쿠키 상세 설명</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set-cookie: **sessionId=abcde1234; expires**=Sat, <span class="number">26</span>-Dec-<span class="number">2020</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> GMT;</span><br><span class="line">**path**=/; **domain**=.google.com; **Secure**</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>사용처</p>
+<ul>
+<li>사용자 로그인 세션 관리<ul>
+<li>유저의 이름 등 보안상 문제로 → 서버에서 sessionkey 만들어서 → sessionId 치환</li>
+</ul>
+</li>
+<li>광고 정보 트래킹</li>
+</ul>
+</li>
+<li><p>쿠키 정보는 항상 서버에 전송됨</p>
+<ul>
+<li>네트워크 트래픽 추가 유발</li>
+<li>최소한의 정보만 사용 (세션 id, 인증 토큰)</li>
+<li>서버에 전송하지 않고, 웹 브라우저 내부에 데이터를 저장하고 싶으면 웹 스토리지 (localStorage, sessionStorage) 참고</li>
+</ul>
+</li>
+<li><p>보안에 민감한 데이터는 저장하면 안됨 (주민번호, 신용카드 번호 등등)</p>
+</li>
+</ul>
+<br>
+
+<h3 id="🔸-쿠키-생명-주기"><a href="#🔸-쿠키-생명-주기" class="headerlink" title="🔸 쿠키 - 생명 주기"></a>🔸 쿠키 - 생명 주기</h3><p><strong>Expires, max-age</strong></p>
+<ul>
+<li>Set-Cookie: expires=Sat, 26-Dec-2020 04:50:59 GMT<ul>
+<li>만료일이 되면 쿠키를 삭제한다</li>
+</ul>
+</li>
+<li>Set-Cookie: max-age=3600 (초단위이다)<ul>
+<li>0이하의 수를 지정하게되면 삭제한다</li>
+</ul>
+</li>
+<li>세션 쿠키 : 만료날짜를 생략하면 브라우저 종료시 까지만 유지한다</li>
+<li>영속 쿠키 : 만료날짜를 입력하면 해당 날짜까지 유지된다</li>
+</ul>
+<br>
+
+<h3 id="🔸-쿠키-도메인"><a href="#🔸-쿠키-도메인" class="headerlink" title="🔸 쿠키 - 도메인"></a>🔸 쿠키 - 도메인</h3><p><strong>Domain</strong></p>
+<p>예) domain=example.org</p>
+<ul>
+<li>명시 : 명시한 문서 기준 도메인 + 서브 도메인 포함<ul>
+<li>domain=example.org를 지정해서 쿠키 생성<ul>
+<li>example.org는 물론이고, dev.example.org도 쿠키 접근 한다</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>생략 : 현재 문서 기준 도메인만 적용한다<ul>
+<li>example.org에서 쿠키를 생성하고 domain지정을 생략<ul>
+<li>example.org에서만 쿠키가 접근하고</li>
+<li>dev.example.org는 쿠키가 접근할 수 없다</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h3 id="🔸-쿠키-경로"><a href="#🔸-쿠키-경로" class="headerlink" title="🔸 쿠키 - 경로"></a>🔸 쿠키 - 경로</h3><p>예) path=/home</p>
+<ul>
+<li>입력한 경로를 <strong>포함한 하위 경로 페이지만 쿠키가 접근</strong></li>
+<li>일반적으로 <code>path=/</code>(루트)로 지정한다</li>
+<li>예)<ul>
+<li>path=/home 지정</li>
+<li>/home –&gt; o</li>
+<li>/home/level1 –&gt; o</li>
+<li>/home/level1/level2 .. –&gt; o</li>
+<li>/hello –&gt; x</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h3 id="🔸-쿠키-보안"><a href="#🔸-쿠키-보안" class="headerlink" title="🔸 쿠키 - 보안"></a>🔸 쿠키 - 보안</h3><p><strong>Secure, HttpOnly, SameSite</strong></p>
+<ul>
+<li>Secure<ul>
+<li>기본적으로 쿠키는 http, https를 구분하지 않고 전송한다</li>
+<li>Secure를 설정하면 https인 경우에만 전송한다</li>
+</ul>
+</li>
+<li>HttpOnly<ul>
+<li>XSS 공격을 방지</li>
+<li>자바스크립트에서 접근 불가능하다 (document.cookie) , 원래는 접근 가능</li>
+<li>HTTP 전송에만 사용</li>
+</ul>
+</li>
+<li>SameSite<ul>
+<li>XSRF 공격을 방지한다</li>
+<li>요청 도메인과 쿠키에 설정된 도메인이 같은 경우에만 쿠키를 전송한다</li>
+</ul>
+</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>9. HTTP-인증헤더&amp;쿠키</p><p><a href="https://parkgeonwoong.github.io/2022/02/16/http/HTTP-인증헤더-쿠키/">https://parkgeonwoong.github.io/2022/02/16/http/HTTP-인증헤더-쿠키/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Woongs</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-02-16</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-02-16</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/02/08/http/HTTP-%EC%9D%BC%EB%B0%98%ED%97%A4%EB%8D%942/"><span class="level-item">8.HTTP-일반헤더2</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-2.5-tablet is-2.5-desktop is-2.5-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="https://avatars.githubusercontent.com/u/65653053?v=4" alt="Parkgeonwoong"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Parkgeonwoong</p><p class="is-size-6 is-block">Woongs</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Seoul</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">19</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/parkgeonwoong" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/parkgeonwoong"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://github.com/parkgeonwoong" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Github</span></span><span class="level-right"><span class="level-item tag">github.com</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Interactive/"><span class="level-start"><span class="level-item">Interactive</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/React/"><span class="level-start"><span class="level-item">React</span></span><span class="level-end"><span class="level-item tag">5</span></span></a><ul><li><a class="level is-mobile" href="/categories/React/Document/"><span class="level-start"><span class="level-item">Document</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/http/"><span class="level-start"><span class="level-item">http</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/"><span class="level-start"><span class="level-item">자료구조</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">February 2022</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li></ul></div></div></div><!--!--><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-2.5-tablet is-2.5-desktop is-2.5-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#📌-인증-헤더-쿠키"><span class="level-left"><span class="level-item">1</span><span class="level-item">📌 인증 헤더, 쿠키</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#✅-인증"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">✅ 인증</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#🔸-Authorizaton"><span class="level-left"><span class="level-item">1.1.1</span><span class="level-item">🔸 Authorizaton</span></span></a></li><li><a class="level is-mobile" href="#🔸-WWW-Authenticate"><span class="level-left"><span class="level-item">1.1.2</span><span class="level-item">🔸 WWW-Authenticate</span></span></a></li></ul></li><li><a class="level is-mobile" href="#✅-쿠키"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">✅ 쿠키</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#예제-쿠키-미사용"><span class="level-left"><span class="level-item">1.2.1</span><span class="level-item">예제 - 쿠키 미사용</span></span></a></li><li><a class="level is-mobile" href="#🔸-Stateless-무상태"><span class="level-left"><span class="level-item">1.2.2</span><span class="level-item">🔸 Stateless (무상태)</span></span></a></li><li><a class="level is-mobile" href="#🔸-쿠키-상세-설명"><span class="level-left"><span class="level-item">1.2.3</span><span class="level-item">🔸 쿠키 상세 설명</span></span></a></li><li><a class="level is-mobile" href="#🔸-쿠키-생명-주기"><span class="level-left"><span class="level-item">1.2.4</span><span class="level-item">🔸 쿠키 - 생명 주기</span></span></a></li><li><a class="level is-mobile" href="#🔸-쿠키-도메인"><span class="level-left"><span class="level-item">1.2.5</span><span class="level-item">🔸 쿠키 - 도메인</span></span></a></li><li><a class="level is-mobile" href="#🔸-쿠키-경로"><span class="level-left"><span class="level-item">1.2.6</span><span class="level-item">🔸 쿠키 - 경로</span></span></a></li><li><a class="level is-mobile" href="#🔸-쿠키-보안"><span class="level-left"><span class="level-item">1.2.7</span><span class="level-item">🔸 쿠키 - 보안</span></span></a></li></ul></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Woongs" height="28"></a><p class="is-size-7"><span>&copy; 2022 Woongs</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
